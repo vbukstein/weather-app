@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Weather Checker</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; }
+        .container { max-width: 400px; margin: auto; }
+        .error { color: red; }
+        .success { color: green; }
+        label, input { display: block; width: 100%; margin-bottom: 10px; }
+        input[type="text"] { padding: 8px; }
+        input[type="submit"] { padding: 8px 16px; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Check the Temperature</h2>
+        <form method="post">
+            <label for="city">Enter city name:</label>
+            <input type="text" id="city" name="city" value="{{ city or '' }}" required>
+            <input type="submit" value="Get Temperature">
+        </form>
+        {% if temperature is not none %}
+            <p class="success">Temperature in <b>{{ city }}</b>: {{ temperature }}°C <br>
+            <small>(Source: {{ source }})</small></p>
+        {% endif %}
+        {% if error %}
+            <p class="error">{{ error }}</p>
+        {% endif %}
+    </div>
+</body>
+</html>
