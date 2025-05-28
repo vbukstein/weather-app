@@ -30,4 +30,4 @@ ENTRYPOINT ["gunicorn", "--bind", "0.0.0.0:5000", "main:app"]
 
 # Local healthcheck inside the container for running the docker container locally
 HEALTHCHECK --interval=30s --timeout=3s \
-  CMD wget --spider -q http://localhost:5000/ || exit 1
+  CMD wget --spider -q http://localhost:5000/health || exit 1
