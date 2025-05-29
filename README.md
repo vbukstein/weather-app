@@ -105,7 +105,15 @@
 </ul>
 
 <h2>Testing</h2>
-<p>Coming soon! (Or add your <code>pytest</code>-based tests in the <code>tests/</code> directory.)</p>
+<p>To ensure the application works correctly, you can run the automated test suite using <code>pytest</code>.</p>
+<p>Install pytest package</p>
+<p>
+  <pre><code>pip install pytest</code></pre>
+</p>
+<p>Run tests from project root directory</p>
+<p>
+  <pre><code>pytest</code></pre>
+</p>
 
 <h2>Continuous integration/Continuous deployment</h2>
 <p>Coming soon! We intend to use Terraform & GitHub Actions</p>
