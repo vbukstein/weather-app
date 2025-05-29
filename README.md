@@ -91,10 +91,12 @@
     │   ├── templates/
     │   │   └── index.html
     │   ├── requirements.txt
-    │   ├── Dockerfile
-    │   ├── .env.example
-    └── .gitignore
-    └── README.md
+    │   └── Dockerfile
+    ├── tests/
+    │   ├── __init__.py
+    │   └── test_main.py
+    ├── .gitignore
+    └──  README.md
 </code></pre>
 </div>
 
