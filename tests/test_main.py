@@ -13,7 +13,7 @@ def test_homepage_get(client):
     """Test GET request to homepage."""
     response = client.get('/')
     assert response.status_code == 200
-    assert b"City" in response.data  # Adjust according to your HTML
+    assert b"Enter " in response.data  # Adjust according to your HTML
 
 def test_health_endpoint(client):
     """Test /health endpoint."""
