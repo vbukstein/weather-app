@@ -114,6 +114,10 @@
 <p>
   <pre><code>pytest</code></pre>
 </p>
+<p>
+  If you encounter import errors please try releative import or run
+  <pre><code>PYTHONPATH=. pytest</code></pre>
+</p>
 
 <h2>Continuous integration/Continuous deployment</h2>
 <p>Coming soon! We intend to use Terraform & GitHub Actions</p>
