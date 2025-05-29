@@ -1,17 +1,4 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <title>Weather App README</title>
-  <style>
-    body { font-family: Arial, sans-serif; margin: 2em; color: #222; }
-    code, pre { background: #f4f4f4; padding: 2px 4px; border-radius: 3px; }
-    pre { padding: 1em; }
-    h1, h2, h3 { color: #2c3e50; }
-    ul { margin-bottom: 1em; }
-    .structure { background: #f9f9f9; border-left: 4px solid #b4b4b4; padding: 1em; margin: 1em 0; }
-  </style>
-</head>
+
 <body>
 
 <h1>Weather App 🌤️</h1>
