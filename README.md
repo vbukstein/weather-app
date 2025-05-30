@@ -56,7 +56,19 @@
 </code></pre>
 
 <strong>Run the container</strong>
-<pre><code>docker run -p 5000:5000 -e OW_API_KEY=your_openweathermap_api_key weather-app</code></pre>
+<pre><code>
+  docker run -p 5000:5000 -e OW_API_KEY=your_openweathermap_api_key weather-app
+</code></pre>
+
+<h2>Helm Usage</h2>
+<p>Build, tag and push your image to private docker registry.</p>
+<p>Configure the appropriate values in values.yaml file.</p>
+<p>Install the helm chart to Kubernetes.</p>
+<pre><code>
+  cd chart
+  helm install weather-app . -f values.yaml
+</code></pre>
+<p>Be sure to deploy your pull secret for private docker registry before installation.</p>
 
 <h2>Health Check Endpoint</h2>
 <p>For use with Docker, Kubernetes, or any load balancer:</p>
@@ -78,6 +90,13 @@
     │   │   └── index.html
     │   ├── requirements.txt
     │   └── Dockerfile
+    ├── chart/
+    │   ├── .helmignore
+    │   ├── Chart.yaml
+    │   ├── values.yaml
+    │   ├── charts/
+    │   ├── templates/
+    │   └── tests/
     ├── tests/
     │   ├── __init__.py
     │   └── test_main.py
