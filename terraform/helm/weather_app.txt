@@ -1,0 +1,6 @@
+resource "helm_release" "my_app" {
+  name             = "my-app"
+  chart            = "${path.module}/../../chart"
+  namespace        = "my-app"
+  create_namespace = true
+}
