@@ -70,6 +70,7 @@ jobs:
           terraform plan -out=tfplan > plan.txt
           # Save exit code for later use
           echo "exitcode=$?" >> $GITHUB_OUTPUT
+          cat plan.txt
 
       # - name: Check for changes
       #   id: check_changes
