@@ -6,7 +6,7 @@ on:
 
 env:
   AWS_REGION: us-east-1
-  ECR_REPOSITORY: public.ecr.aws/m5c3k8g7/ecr-vb/weather-app
+  ECR_REPOSITORY: m5c3k8g7/ecr-vb/weather-app
   IMAGE_TAG: "test"
 
 jobs:
