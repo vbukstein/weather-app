@@ -30,6 +30,7 @@ jobs:
       - name: Bump version
         id: bump_version
         run: |
+          cd app
           echo "Bumping version..."
           echo "NEW_VERSION=$(export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && bump -p)" >> $GITHUB_OUTPUT
 
