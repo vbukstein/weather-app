@@ -36,7 +36,10 @@ jobs:
 
       - name: Login to Amazon ECR
         id: login-ecr
-        uses: aws-actions/amazon-ecr-login@v2
+        # uses: aws-actions/amazon-ecr-login@v2
+        run: |
+          echo "Logging in to Amazon ECR..."
+          aws ecr get-login-password --region ${{ env.AWS_REGION }} | docker login --username AWS --password-stdin public.ecr.aws
 
       - name: Build, tag, and push image to ECR
         env:
