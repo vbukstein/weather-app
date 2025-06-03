@@ -1,0 +1,19 @@
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: weather-app
+  annotations:
+    nginx.ingress.kubernetes.io/rewrite-target: /
+  namespace: default
+spec:
+  ingressClassName: nginx
+  rules:
+    - http:
+        paths:
+          - backend:
+              service:
+                name: openweather-weather-app
+                port:
+                  number: 5000
+            path: /
+            pathType: Prefix
