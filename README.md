@@ -97,10 +97,26 @@
     │   ├── charts/
     │   ├── templates/
     │   └── tests/
+    ├── terraform/
+    │   ├── helm/
+    │   │    |── nginx_ingress.tf
+    │   │    |── providers.tf
+    │   │    └── variables.tf
+    │   ├── remote_state/
+    │   │    |── main.tf
+    │   │    |── outputs.tf
+    │   │    └── variables.tf
+    │   ├── backend.tf
+    │   ├── main.tf
+    │   ├── outputs.tf
+    │   ├── providers.tf
+    │   ├── variables.tf
+    │   └── versions.tf
     ├── tests/
     │   ├── __init__.py
     │   └── test_main.py
     ├── .gitignore
+    ├──  pytest.ini
     └──  README.md
 </code></pre>
 </div>
@@ -127,7 +143,35 @@
 </p>
 
 <h2>Continuous integration/Continuous deployment</h2>
-<p>Coming soon! We intend to use Terraform & GitHub Actions</p>
+<ul>
+<li><strong>Install and configure aws cli</strong></li>
+  <p>Ensure you have aws cli installed <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html" target="_blank">Install AWS CLI</a>.</p>
+  <p>Configure your AWS credentials to interact with AWS API.</p>
+  <p>
+    Go to <a href="https://docs.aws.amazon.com/cli/latest/userguide/getting-started-quickstart.html" target="_blank">Setting up the AWS CLI</a> and setup your cli
+  </p>
+<li><strong>Deploy infrastructure to AWS with Terraform</strong></li>
+<p>Ensure you have terraform cli installed <a href="https://developer.hashicorp.com/terraform/tutorials/aws-get-started/install-cli" target="_blank">Install terraform CLI</a>.</p>
+<p>Deploy backend to manage remote state.</p>
+<pre><code>
+  cd terraform/remote_state
+  terraform init
+  terraform plan 
+  terraform apply
+</code></pre>
+<p>Deploy infrastructure to AWS.</p>
+<pre><code>
+  cd terraform
+  terraform init
+  terraform plan
+  terraform apply
+</code></pre>
+<li><strong>Install the helm chart to EKS you created.</strong></li>
+<pre><code>
+  cd chart
+  helm install weather-app . -f values.yaml
+</code></pre>
+</ul>
 
 <h2>Contributing</h2>
 <ol>
@@ -142,6 +186,7 @@
 <ul>
   <li><a href="https://flask.palletsprojects.com/">Flask</a></li>
   <li><a href="https://openweathermap.org/api">OpenWeatherMap API</a></li>
+  <li><a href="https://developer.hashicorp.com/terraform">Terraform</a></li>
 </ul>
 
 <p><strong>Questions or suggestions?</strong><br>
