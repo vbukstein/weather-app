@@ -72,15 +72,15 @@ jobs:
           echo "exitcode=$?" >> $GITHUB_OUTPUT
           cat plan.txt
 
-      # - name: Check for changes
-      #   id: check_changes
-      #   run: |
-      #     if grep -q "No changes. Infrastructure is up-to-date." plan.txt; then
-      #       echo "no_changes=true" >> $GITHUB_OUTPUT
-      #     else
-      #       echo "no_changes=false" >> $GITHUB_OUTPUT
-      #     fi
+      - name: Check for changes
+        id: check_changes
+        run: |
+          if grep -q "No changes. Infrastructure is up-to-date." plan.txt; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+          fi
 
-      # - name: Terraform Apply
-      #   if: steps.check_changes.outputs.no_changes == 'false'
-      #   run: terraform apply -auto-approve tfplan
+      - name: Terraform Apply
+        if: steps.check_changes.outputs.no_changes == 'false'
+        run: terraform apply -auto-approve tfplan
