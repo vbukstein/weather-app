@@ -33,6 +33,7 @@ jobs:
           cd app
           echo "Bumping version..."
           echo "NEW_VERSION=$(export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && bump -p)" >> $GITHUB_OUTPUT
+          echo $NEW_VERSION
 
       # - name: Set output for version
       #   run: echo "version=${{ steps.bump_version.outputs.version }}" >> $GITHUB_OUTPUT
