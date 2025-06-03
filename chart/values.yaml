@@ -14,9 +14,8 @@ image:
   tag: "0.0.1"
 
 # This is for the secrets for pulling an image from a private repository more information can be found here: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-imagePullSecrets:
-- name: "aws-ecr-credentials"
-- name: "ng-registry"
+imagePullSecrets: []
+# - name: "aws-ecr-credentials"
 # This is to override the chart name.
 nameOverride: ""
 fullnameOverride: ""

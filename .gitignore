@@ -5,3 +5,10 @@
 .pytest_cache/
 
 **/.env.example
+
+# Local .terraform directories (providers, modules, etc.)
+**/.terraform/
+
+# Terraform state files (can contain sensitive data)
+*.tfstate
+*.tfstate.*
