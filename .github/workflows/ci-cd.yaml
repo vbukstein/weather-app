@@ -1,0 +1,12 @@
+name: test
+
+jobs:
+  test-job:
+    name: Test Job
+    runs-on: self-hosted
+    steps:
+      - name: Test steps
+        run: |
+          echo "Running test steps..."
+          # Add your test commands here
+          echo "Test completed successfully!"
