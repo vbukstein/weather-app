@@ -1,5 +1,9 @@
 name: test
 
+on:
+  push:
+    branches: [ add-cicd ]
+
 jobs:
   test-job:
     name: Test Job
