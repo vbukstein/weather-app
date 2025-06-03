@@ -75,6 +75,7 @@ jobs:
       - name: Check for changes
         id: check_changes
         run: |
+          cd terraform
           if grep -q "No changes. Infrastructure is up-to-date." plan.txt; then
             echo "no_changes=true" >> $GITHUB_OUTPUT
           else
@@ -83,4 +84,6 @@ jobs:
 
       - name: Terraform Apply
         if: steps.check_changes.outputs.no_changes == 'false'
-        run: terraform apply -auto-approve tfplan
+        run: |
+          cd terraform
+          terraform apply -auto-approve tfplan
