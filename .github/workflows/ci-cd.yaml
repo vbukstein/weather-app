@@ -23,6 +23,8 @@ jobs:
   bump-version:
     name: Bump Version
     runs-on: self-hosted
+    outputs:
+      NEW_VERSION: ${{ steps.bump_version.outputs.NEW_VERSION }}
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
