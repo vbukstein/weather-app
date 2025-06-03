@@ -48,3 +48,38 @@ jobs:
           cd app
           docker build -t $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }} .
           docker push $ECR_REGISTRY/${{ env.ECR_REPOSITORY }}:${{ env.IMAGE_TAG }}
+
+  terraform:
+    runs-on: self-hosted
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: |
+          cd terraform
+          terraform plan -out=tfplan > plan.txt
+          # Save exit code for later use
+          echo "exitcode=$?" >> $GITHUB_OUTPUT
+
+      # - name: Check for changes
+      #   id: check_changes
+      #   run: |
+      #     if grep -q "No changes. Infrastructure is up-to-date." plan.txt; then
+      #       echo "no_changes=true" >> $GITHUB_OUTPUT
+      #     else
+      #       echo "no_changes=false" >> $GITHUB_OUTPUT
+      #     fi
+
+      # - name: Terraform Apply
+      #   if: steps.check_changes.outputs.no_changes == 'false'
+      #   run: terraform apply -auto-approve tfplan
