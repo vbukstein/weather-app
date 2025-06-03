@@ -35,8 +35,23 @@ jobs:
           cd app
           echo "Bumping version..."
           echo "NEW_VERSION=$(export LC_ALL=C.UTF-8 && export LANG=C.UTF-8 && bump -p)" >> $GITHUB_OUTPUT
+
       - name: Print new version
         run: echo "New version is ${{ steps.bump_version.outputs.NEW_VERSION }}"
+
+      - name: Update Chart.yaml
+        run: |
+          cd chart
+          echo "Updating Chart.yaml with new version..."
+          sed -i "s/^version: .*/version: ${{ steps.bump_version.outputs.NEW_VERSION }}/" Chart.yaml
+          sed -i "s/^appVersion: .*/appVersion: ${{ steps.bump_version.outputs.NEW_VERSION }}/" Chart.yaml
+
+      - name: Commit and push changes
+        run: |
+          git config --local user.email "
+          git commit -am "Release: bump version to ${{ steps.bump_version.outputs.NEW_VERSION }} [skip ci]"
+          git push
+
 
       # - name: Set output for version
       #   run: echo "version=${{ steps.bump_version.outputs.version }}" >> $GITHUB_OUTPUT
