@@ -48,7 +48,6 @@ jobs:
 
       - name: Commit and push changes
         run: |
-          git config --local user.email "
           git commit -am "Release: bump version to ${{ steps.bump_version.outputs.NEW_VERSION }} [skip ci]"
           git push
 
