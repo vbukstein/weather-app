@@ -133,4 +133,6 @@ jobs:
 
       - name: Deploy with Helm
         run: |
-          helm upgrade --install "$HELM_RELEASE_NAME" ./chart --namespace default
+          cd chart
+          echo "Deploying with Helm..."
+          helm upgrade --install ${{ env.HELM_RELEASE_NAME }} . -f values.yaml --namespace default
