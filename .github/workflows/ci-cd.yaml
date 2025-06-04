@@ -1,4 +1,4 @@
-name: test
+name: ci-cd-for-weather-app
 
 on:
   push:
@@ -7,7 +7,6 @@ on:
 env:
   AWS_REGION: us-east-1
   ECR_REPOSITORY: m5c3k8g7/ecr-vb/weather-app
-  IMAGE_TAG: "test"
   HELM_RELEASE_NAME: "openweather"
 
 jobs:
@@ -84,6 +83,7 @@ jobs:
 
   terraform:
     runs-on: self-hosted
+    needs: build-and-push
     steps:
       - name: Checkout code
         uses: actions/checkout@v3
