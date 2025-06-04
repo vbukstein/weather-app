@@ -2,7 +2,7 @@ name: ci-cd-for-weather-app
 
 on:
   push:
-    branches: [ add-cicd ]
+    branches: [ main ]
 
 env:
   AWS_REGION: us-east-1
