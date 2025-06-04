@@ -109,7 +109,7 @@ jobs:
         id: check_changes
         run: |
           cd terraform
-          cat plan.txt |grep "No changes. Your infrastructure matches the configuration."
+          grep -aF "No changes." plan.txt
           echo "no_changes=$?" >> $GITHUB_OUTPUT
 
       - name: Terraform Apply
