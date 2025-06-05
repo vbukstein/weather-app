@@ -5,6 +5,6 @@ with open("README.md", "r") as fh:
 
 setuptools.setup(
     name="python-infra",
-    version="1.0.0",
+    version="1.0.1",
     description="Wheather App",
     url="https://github.com/vbukstein/weather-app.git",)
