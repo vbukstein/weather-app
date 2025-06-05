@@ -1,4 +1,5 @@
 # Use Alpine for minimal size
+# Use Python 3.11 Alpine image for a lightweight container
 FROM python:3.11-alpine
 
 # Set environment variables for cleaner image with no cache and unbuffered output
