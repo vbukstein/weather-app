@@ -1,6 +1,6 @@
 from flask import Flask, render_template, request, jsonify
-from cache import get_cached_temperature, set_cache
-from weather import fetch_weather
+from .cache import get_cached_temperature, set_cache
+from .weather import fetch_weather
 
 app = Flask(__name__)
 
