@@ -27,4 +27,5 @@ jobs:
 
       - name: Run tests
         run: |
-          pytest tests/
+          cd app
+          python3 -m pytest ../tests/
