@@ -1,8 +1,9 @@
-name: ci-cd-for-weather-app
+name: CI/CD for main branch
+# This workflow is triggered on pushes to the main branch and handles version bumping, Docker image building, ECR pushing, Terraform deployment, and Helm deployment.
 
 on:
   push:
-    branches: [ add-cicd ]
+    branches: [ main ]
 
 env:
   AWS_REGION: us-east-1
