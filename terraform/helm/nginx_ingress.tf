@@ -11,7 +11,7 @@ resource "helm_release" "nginx_ingress" {
       service:
         annotations:
           service.beta.kubernetes.io/aws-load-balancer-type: "nlb"
-          service.beta.kubernetes.io/aws-load-balancer-internal: "true"
+          service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
           service.beta.kubernetes.io/aws-load-balancer-connection-idle-timeout: "8000"
         type: LoadBalancer
     EOF

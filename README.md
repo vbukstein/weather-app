@@ -171,6 +171,14 @@
   cd chart
   helm install weather-app . -f values.yaml
 </code></pre>
+<li><strong>GitHub Actions for ci/cd.</strong></li>
+<p>Every commit to main branch will triger the Action.</p>
+<p>The Action desined to run on self-hosted runner so be sure to install the runner before. Go to <a href="https://docs.github.com/en/actions/hosting-your-own-runners/managing-self-hosted-runners/adding-self-hosted-runners" target="_blank">Install self-hosted runner</a>.</p>
+<p>The Action will bump application version, build and push the docker image with application files to Public AWS docker registry <a href="https://gallery.ecr.aws" target="_blank">Amazon ECR Public Gallery</a>.</p>
+<p>The GitHub application source code and Helm chart folders in repository will be updated with bumped app version as well.</p>
+<p>Next step in Action will check if some changes in infrastructure is needed and will apply them to AWS using Terraform.</p>
+<p>And finaly the application will be updated in EKS using Helm package manager.</p>
+<p>The application will be exposed to internet by AWS Network Load Ballancer deployed by Terraform - you can fing it's DNS record in AWS console.</p>
 </ul>
 
 <h2>Contributing</h2>
@@ -184,9 +192,11 @@
 
 <h2>Credits</h2>
 <ul>
-  <li><a href="https://flask.palletsprojects.com/">Flask</a></li>
   <li><a href="https://openweathermap.org/api">OpenWeatherMap API</a></li>
+  <li><a href="https://flask.palletsprojects.com/">Flask</a></li>
   <li><a href="https://developer.hashicorp.com/terraform">Terraform</a></li>
+  <li><a href="https://github.com/features/actions">GitHub Actions</a></li>
+  <li><a href="https://aws.amazon.com/console/">AWS</a></li>
 </ul>
 
 <p><strong>Questions or suggestions?</strong><br>
