@@ -46,7 +46,7 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
           git commit -am "Release: bump version to ${{ steps.bump_version.outputs.NEW_VERSION }} [skip ci]"
-          git push origin HEAD:add-cicd
+          git push origin HEAD:main
 
 
       # - name: Set output for version
