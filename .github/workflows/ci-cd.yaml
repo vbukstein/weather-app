@@ -122,20 +122,20 @@ jobs:
           cd terraform
           terraform apply -auto-approve tfplan
 
-  helm_deploy:
-    runs-on: self-hosted
-    needs: terraform   # This ensures helm_deploy waits for terraform
-    steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-        with:
-          ref: main
+  # helm_deploy:
+  #   runs-on: self-hosted
+  #   needs: terraform   # This ensures helm_deploy waits for terraform
+  #   steps:
+  #     - name: Checkout code
+  #       uses: actions/checkout@v4
+  #       with:
+  #         ref: main
 
-      # - name: Set up Helm
-      #   uses: azure/setup-helm@v4
+  #     # - name: Set up Helm
+  #     #   uses: azure/setup-helm@v4
 
-      - name: Deploy with Helm
-        run: |
-          cd chart
-          echo "Deploying with Helm..."
-          helm upgrade --install ${{ env.HELM_RELEASE_NAME }} . -f values.yaml --namespace default
+  #     - name: Deploy with Helm
+  #       run: |
+  #         cd chart
+  #         echo "Deploying with Helm..."
+  #         helm upgrade --install ${{ env.HELM_RELEASE_NAME }} . -f values.yaml --namespace default
