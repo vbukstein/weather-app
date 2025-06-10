@@ -27,7 +27,7 @@ module "vpc" {
 # EKS Cluster
 module "eks" {
   source  = "terraform-aws-modules/eks/aws"
-  version = "20.8.4"
+  version = "20.36.1"
 
   cluster_name    = var.cluster_name
   cluster_version = var.cluster_version
@@ -39,9 +39,9 @@ module "eks" {
 
   eks_managed_node_groups = {
     default = {
-      desired_capacity = 2
+      desired_capacity = 3
       min_capacity     = 1
-      max_capacity     = 3
+      max_capacity     = 4
 
       instance_types = ["t3.medium"]
       subnets        = module.vpc.private_subnets
