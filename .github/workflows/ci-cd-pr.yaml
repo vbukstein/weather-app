@@ -29,3 +29,44 @@ jobs:
         run: |
           cd app
           python3 -m pytest ../tests/
+
+  terraform:
+    runs-on: self-hosted
+    needs: build-and-push
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      # - name: Setup Terraform
+      #   uses: hashicorp/setup-terraform@v3
+
+      - name: Terraform Init
+        run: |
+          cd terraform
+          terraform init
+
+      - name: Terraform Plan
+        id: plan
+        run: |
+          cd terraform
+          terraform plan -out=tfplan > plan.txt
+          # Save exit code for later use
+          echo "exitcode=$?" >> $GITHUB_OUTPUT
+          cat plan.txt
+
+      - name: Check for changes
+        id: check_changes
+        run: |
+          cd terraform
+          if grep -aFq "No changes." plan.txt; then
+            echo "no_changes=true" >> $GITHUB_OUTPUT
+          else
+            echo "no_changes=false" >> $GITHUB_OUTPUT
+          fi
+
+      - name: Terraform Alert
+        if: steps.check_changes.outputs.no_changes == 'false'
+        run: |
+          echo "Terraform plan has changes. Please review the plan output above."
+        else:
+          echo "No changes detected in Terraform plan."
