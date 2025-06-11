@@ -64,8 +64,7 @@ jobs:
             echo "no_changes=false" >> $GITHUB_OUTPUT
           fi
 
-      - name: Terraform Alert
+      - name: Terraform Alert 
         if: steps.check_changes.outputs.no_changes == 'false'
         run: echo "Terraform plan has changes. Please review the plan output above."
-        if: steps.check_changes.outputs.no_changes == 'true'
-        run: echo "No changes detected in Terraform plan."
+        
