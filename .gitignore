@@ -12,3 +12,6 @@
 # Terraform state files (can contain sensitive data)
 *.tfstate
 *.tfstate.*
+
+#HTML REDME for debug and design
+README.html

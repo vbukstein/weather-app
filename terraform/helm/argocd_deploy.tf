@@ -27,6 +27,8 @@ resource "helm_release" "argocd" {
         extraArgs: 
         - '--insecure'
         - '--rootpath=/argocd'
+    crds:
+        keep: false
     EOF
   ]
 }
