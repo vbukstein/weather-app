@@ -99,7 +99,7 @@
     │   └── tests/
     ├── terraform/
     │   ├── helm/
-    │   │    |── argocd_deploy.tf
+    |   |    |── argocd_deploy.tf
     │   │    |── nginx_ingress.tf
     │   │    |── providers.tf
     │   │    └── variables.tf
